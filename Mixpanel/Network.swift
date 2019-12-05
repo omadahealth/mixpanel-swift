@@ -64,8 +64,9 @@ class Network {
         guard let request = buildURLRequest(base, resource: resource) else {
             return
         }
-
-        URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+        
+        let urlSession = Mixpanel.mainInstance().customURLSession ?? URLSession.shared
+        urlSession.dataTask(with: request) { (data, response, error) -> Void in
             guard let httpResponse = response as? HTTPURLResponse else {
 
                 if let hasError = error {

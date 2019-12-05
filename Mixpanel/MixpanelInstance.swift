@@ -45,6 +45,9 @@ protocol AppLifecycle {
 
 /// The class that represents the Mixpanel Instance
 open class MixpanelInstance: CustomDebugStringConvertible, FlushDelegate, AEDelegate {
+    
+    /// The a Custom URL Session object that gives control over Mixpanel URLSession for Certificate Pinning.
+    open var customURLSession: URLSession?
 
     /// The a MixpanelDelegate object that gives control over Mixpanel network activity.
     open var delegate: MixpanelDelegate?
